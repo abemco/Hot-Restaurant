@@ -10,6 +10,7 @@ var app = express();
 var PORT = 3000;
 
 // Sets up the Express app to handle data parsing
+app.use(express.static(__dirname + '/assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -41,7 +42,7 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
 
-app.get("/makereservation", function(req, res) {
+app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
@@ -55,7 +56,7 @@ app.get("/api/tables", function(req, res) {
 });
 
 // Displays all on waitlist
-app.get("/api/waitlist", function(req, res) {
+app.get("/api/reserve", function(req, res) {
     return res.json(waitlist);
 });
 
